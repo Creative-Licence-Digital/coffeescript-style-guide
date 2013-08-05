@@ -1,4 +1,4 @@
-** Indentations, whitespaces, ... **
+## Indentations, whitespaces, ...
 
 - Your text editor should be configured to not create tabs, but whitespaces when you indent. 
 - A indentation should be equal to 2 whitespaces. 
@@ -27,7 +27,7 @@
     myVariable = 10
 
 
-** Use keywords or nothing instead of symbols when possible **
+## Use keywords or nothing instead of symbols when possible 
 
 - Prefer and, or, not to &&, ||, !
     if messageShouldBeSent and notToLate
@@ -64,7 +64,7 @@
       x + y
 
 
-** Comparisons **
+## Comparisons
   
 - Use chained operators instead of multiple comparisons
     
@@ -89,7 +89,7 @@
     age = person?.getAge?().intValue
     
 
-** Enumeration **
+## Enumeration 
 
 - Prefer loop comprehensions or map/filter/reduce functions to for loop constructions
 
@@ -121,7 +121,7 @@ To perfer
     , 0
 
 
-** Closures **
+## Closures
 
 - Use the do operator
     for age in ages
@@ -131,7 +131,7 @@ To perfer
         , 100
 
 
-** Assignement / Destructuration **
+## Assignement / Destructuration
 
 - Use destructuration when possible
 
@@ -155,7 +155,7 @@ To perfer
       done? null, { usage }
 
 
-** Strings **
+## Strings 
 
 - Use interpolation instead of concatenation
     
