@@ -79,7 +79,8 @@
 
     if 10 < x < 20 
       doSomething()
-      
+
+
 - use the ? operator (for default assignement)
 
 
@@ -113,7 +114,8 @@ To avoid :
     for person in persons
       if person.age > 30
         ages.push person.age
- 
+
+
 To prefer : 
 
 
@@ -134,7 +136,7 @@ To avoid :
     for person in persons
       ageSum += person.age
 
-To perfer
+To prefer
 
 
     ageSum = persons.reduce (result, person) -> 

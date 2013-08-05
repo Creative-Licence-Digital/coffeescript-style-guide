@@ -79,12 +79,13 @@ add = (x, y) ->
 ```coffeescript
 if 10 < x < 20 
   doSomething()
-  
-- use the ? operator (for default assignement)
 ```
 
-    myAge ?= 33
+- use the ? operator (for default assignement)
 
+```coffeescript
+myAge ?= 33
+```
 - use the ? operator for variable existence
 
 ```coffeescript
@@ -113,12 +114,13 @@ ages = []
 for person in persons
   if person.age > 30
     ages.push person.age
- 
-To prefer : 
 ```
 
-    ages = persons.map (person) -> person.age
+To prefer : 
+
 ```coffeescript
+ages = persons.map (person) -> person.age
+
 ages = persons
          .filter (p) -> p.age > 30
          .map (p) -> p.age
@@ -134,7 +136,7 @@ ageSum = 0
 for person in persons
   ageSum += person.age
 ```
-To perfer
+To prefer
 
 ```coffeescript
 ageSum = persons.reduce (result, person) -> 
