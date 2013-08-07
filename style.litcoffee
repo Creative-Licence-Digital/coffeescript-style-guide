@@ -34,12 +34,12 @@
     myFunc = (params, done) -> 
       result = 1
       done null, result
-
+    
     myObject = 
       myFirstProperty: 1
       mySecondProperty: 2
       myThirdProperty: 3
-
+    
     myArray = [
       'cat'
       'dog'
@@ -68,12 +68,12 @@
   intimidating to other devs. Variable names that sound read like an English
   sentence when used are really great, if possible.
 
-  Avoid:
+  **Avoid:**
 
     if num % 2 is 1
       console.log 'number is odd'
 
-  Prefer:
+  **Prefer:**
 
     even = num % 2 is 0
     if not even
@@ -121,11 +121,11 @@
 - Prefer destructuring for assignment when possible:
 
     [y, x] = [x, y]
-
+    
     [firstName, lastName] = "Chubby Checker".split /\s/
-
+    
     [firstWord, otherWords...] = "scrambled cassovary procedure".split /\s/ 
-
+    
     { name, age } = { name : "Chubby Checker", age : 53 }
 
 
@@ -163,28 +163,28 @@
 
 - Prefer loop comprehensions or map/filter/reduce rather than loops.
 
-  Avoid:
+  **Avoid:**
 
     ages = []
     for person in persons
       if person.age > 30
         ages.push person.age
 
-  Prefer : 
+  **Prefer:**
 
     ages = persons
       .filter (p) -> p.age > 30
       .map (p) -> p.age
-
+    
     ages = (person.age for person in persons when person.age > 30)
 
-  Avoid:
+  **Avoid:**
 
     ageSum = 0
     for person in persons
       ageSum += person.age
 
-  Prefer:
+  **Prefer:**
 
     ageSum = persons.reduce (sum, p) ->
       sum + p.age
@@ -225,36 +225,36 @@
 
 - Use destructuring in function arguments for parameter style functions:
 
-  Avoid:
+  **Avoid:**
 
     add = (params, done) ->
       done null, params.a + params.b
 
-  Prefer:
+  **Prefer:**
 
     add = ({ a, b }, done) ->
       done null, a + b
 
 - Use the fat arrow instead of binding functions manually:
 
-  Avoid:
+  **Avoid:**
 
     that = @
     $('.header').click ->
       that.doSomething()
 
-  Prefer:
+  **Prefer:**
 
     $('.header').click =>
       @doSomething()
 
 - Don't define more than one function on a single line:
 
-  Avoid:
+  **Avoid:**
     
     list.map((p) -> p.age).filter((a) -> a > 20)
 
-  Prefer:
+  **Prefer:**
 
     list
       .map (p) -> p.age
@@ -264,23 +264,21 @@
   many subtle bugs caused by a function body taking over an expression, as well
   as plain invalid CoffeeScript.
 
-  Wrong (won't compile):
+  **Wrong (won't compile):**
     
-    ###
-    if _.any users, (u) -> u.active and userWidgetEnabled
-      showUserWidget()
-    ###
+    #if _.any users, (u) -> u.active and userWidgetEnabled
+    #  showUserWidget()
 
-  Correct:
+  **Correct:**
 
     if _.any(users, (u) -> u.active) and userWidgetEnabled
       showUserWidget()
 
-  Wrong (invalid semantics):
+  **Wrong (invalid semantics):**
 
     show = _.any users, (u) -> u.active and userWidgetEnabled
 
-  Correct:
+  **Correct:**
 
     show = _.any(users, (u) -> u.active) and userWidgetEnabled
 

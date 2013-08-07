@@ -68,12 +68,12 @@ enableCaptcha = true
   intimidating to other devs. Variable names that sound read like an English
   sentence when used are really great, if possible.
 
-  Avoid:
+  **Avoid:**
 ```coffeescript
 if num % 2 is 1
   console.log 'number is odd'
 ```
-  Prefer:
+  **Prefer:**
 ```coffeescript
 even = num % 2 is 0
 if not even
@@ -163,14 +163,14 @@ doSomething() unless extremelyUnlikelyThing
 
 - Prefer loop comprehensions or map/filter/reduce rather than loops.
 
-  Avoid:
+  **Avoid:**
 ```coffeescript
 ages = []
 for person in persons
   if person.age > 30
     ages.push person.age
 ```
-  Prefer : 
+  **Prefer:**
 ```coffeescript
 ages = persons
   .filter (p) -> p.age > 30
@@ -178,13 +178,13 @@ ages = persons
 
 ages = (person.age for person in persons when person.age > 30)
 ```
-  Avoid:
+  **Avoid:**
 ```coffeescript
 ageSum = 0
 for person in persons
   ageSum += person.age
 ```
-  Prefer:
+  **Prefer:**
 ```coffeescript
 ageSum = persons.reduce (sum, p) ->
   sum + p.age
@@ -225,36 +225,36 @@ totalUsage = (users = [], done) ->
 ```
 - Use destructuring in function arguments for parameter style functions:
 
-  Avoid:
+  **Avoid:**
 ```coffeescript
 add = (params, done) ->
   done null, params.a + params.b
 ```
-  Prefer:
+  **Prefer:**
 ```coffeescript
 add = ({ a, b }, done) ->
   done null, a + b
 ```
 - Use the fat arrow instead of binding functions manually:
 
-  Avoid:
+  **Avoid:**
 ```coffeescript
 that = @
 $('.header').click ->
   that.doSomething()
 ```
-  Prefer:
+  **Prefer:**
 ```coffeescript
 $('.header').click =>
   @doSomething()
 ```
 - Don't define more than one function on a single line:
 
-  Avoid:
+  **Avoid:**
     
     list.map((p) -> p.age).filter((a) -> a > 20)
 
-  Prefer:
+  **Prefer:**
 ```coffeescript
 list
   .map (p) -> p.age
@@ -264,23 +264,21 @@ list
   many subtle bugs caused by a function body taking over an expression, as well
   as plain invalid CoffeeScript.
 
-  Wrong (won't compile):
+  **Wrong (won't compile):**
     
-    ###
-    if _.any users, (u) -> u.active and userWidgetEnabled
-      showUserWidget()
-    ###
+    #if _.any users, (u) -> u.active and userWidgetEnabled
+    #  showUserWidget()
 
-  Correct:
+  **Correct:**
 ```coffeescript
 if _.any(users, (u) -> u.active) and userWidgetEnabled
   showUserWidget()
 ```
-  Wrong (invalid semantics):
+  **Wrong (invalid semantics):**
 ```coffeescript
 show = _.any users, (u) -> u.active and userWidgetEnabled
 ```
-  Correct:
+  **Correct:**
 ```coffeescript
 show = _.any(users, (u) -> u.active) and userWidgetEnabled
 ```
