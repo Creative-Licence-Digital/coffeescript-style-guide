@@ -46,6 +46,7 @@ myArray = [
   'hamster'
 ]
 ```
+
 ## Naming
 
 - Use lowerCamelCase for naming variables and functions. Acronyms and
@@ -79,6 +80,7 @@ even = num % 2 is 0
 if not even
   console.log 'number is odd'
 ```
+
 ## Primitives
 
 - Use just `true` and `false`, not `yes`, `no`, `on` or `off`:
@@ -102,6 +104,7 @@ console.log "Fred's alright"
 ```coffeescript
 console.log "#{name} is #{age}"
 ```
+
 ## Operators
 
 - Prefer `and`, `or`, `not` to `&&`, `||`, `!`:
@@ -159,6 +162,7 @@ age = person?.getAge?().intValue
 ```coffeescript
 doSomething() unless extremelyUnlikelyThing
 ```
+
 ## Enumeration 
 
 - Prefer loop comprehensions or map/filter/reduce rather than loops.
@@ -190,6 +194,7 @@ ageSum = persons.reduce (sum, p) ->
   sum + p.age
 , 0
 ```
+
 ## Functions
 
 - DON'T use `return` for *small* (one or two expressions) functions:

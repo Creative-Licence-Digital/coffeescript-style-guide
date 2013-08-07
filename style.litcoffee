@@ -46,6 +46,7 @@
       'hamster'
     ]
 
+
 ## Naming
 
 - Use lowerCamelCase for naming variables and functions. Acronyms and
@@ -79,6 +80,7 @@
     if not even
       console.log 'number is odd'
 
+
 ## Primitives
 
 - Use just `true` and `false`, not `yes`, `no`, `on` or `off`:
@@ -101,6 +103,7 @@
 - Use interpolation instead of concatenation:
 
     console.log "#{name} is #{age}"
+
 
 ## Operators
 
@@ -159,6 +162,7 @@
 
     doSomething() unless extremelyUnlikelyThing
 
+
 ## Enumeration 
 
 - Prefer loop comprehensions or map/filter/reduce rather than loops.
@@ -189,6 +193,7 @@
     ageSum = persons.reduce (sum, p) ->
       sum + p.age
     , 0
+
 
 ## Functions
 
