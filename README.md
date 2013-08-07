@@ -169,9 +169,9 @@
 
   ```coffeescript
   person =
-    name: 'Fred'
-    age: 20
-    'some-strange-key': 9
+      name: 'Fred'
+      age: 20
+      'some-strange-key': 9
   ```
 
 ## Operators
