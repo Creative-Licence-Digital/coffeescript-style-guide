@@ -7,36 +7,36 @@
 - No whitespace inside brackets:
 
   ```coffeescript
-test = (params, done) ->
-  done null, {}
-```
+  test = (params, done) ->
+      done null, {}
+  ```
 
 - But DO have one space inside curly braces:
 
   ```coffeescript
-someObj = { a: 1, b: 2 }
-```
+  someObj = { a: 1, b: 2 }
+  ```
 
 - Surround operators and arrows (`->` and `=>`) with a single space:
 
   ```coffeescript
-foo = 1 + 2 + 3
-myFunction = -> console.log 'toto'
-```
+  foo = 1 + 2 + 3
+  myFunction = -> console.log 'toto'
+  ```
 
 - Use a single space after commas:
 
   ```coffeescript
-console.log 'toto', 'toto2'
-```
+  console.log 'toto', 'toto2'
+  ```
 
 - Indent chains of methods:
 
   ```coffeescript
-$('#menu')
-  .show()
-  .addClass('active')
-```
+  $('#menu')
+      .show()
+      .addClass('active')
+  ```
 
 - Don't use brackets and commas when unnecessary for functions objects and
   arrays:
@@ -64,22 +64,22 @@ $('#menu')
   initialisms should have only their first letter capitalised:
 
   ```coffeescript
-htmlAndCssFragment = '<p style="color: red">'
-```
+  htmlAndCssFragment = '<p style="color: red">'
+  ```
 
 - Try to give functions a verb-like name, and variables a noun-like name.
 
   ```coffeescript
-name = 'Jack'
-printName = -> console.log name
-```
+  name = 'Jack'
+  printName = -> console.log name
+  ```
 
 - Try to keep variable names positive:
 
   ```coffeescript
-enableCaptcha = true
-# NOT: disableCaptcha = false
-```
+  enableCaptcha = true
+  # NOT: disableCaptcha = false
+  ```
 
 - Try to use descriptive variable names so that the code is self documenting.
   Break up long expressions with variables so that code doesn't look so
@@ -89,124 +89,124 @@ enableCaptcha = true
   **Avoid:**
 
   ```coffeescript
-if num % 2 is 1
-  console.log 'number is odd'
-```
+  if num % 2 is 1
+      console.log 'number is odd'
+  ```
 
   **Prefer:**
 
   ```coffeescript
-even = num % 2 is 0
-if not even
-  console.log 'number is odd'
-```
+  even = num % 2 is 0
+  if not even
+      console.log 'number is odd'
+  ```
 
 ## Primitives
 
 - Use just `true` and `false`, not `yes`, `no`, `on` or `off`:
 
   ```coffeescript
-x = true
-```
+  x = true
+  ```
 
 - Leave the decimal point off numbers: all numbers should be treated as
   fractional. Keep the leading `0` for numbers between 0 and 1.
 
   ```coffeescript
-x = 2
-y = 2.3
-z = 0.5
-```
+  x = 2
+  y = 2.3
+  z = 0.5
+  ```
 
 - Prefer single quotes for strings. Use double quotes when text contains single
   quotes or interpolation is required:
 
   ```coffeescript
-console.log 'Fred is cool'
-console.log "Fred's alright"
-```
+  console.log 'Fred is cool'
+  console.log "Fred's alright"
+  ```
 
 - Use interpolation instead of concatenation:
 
   ```coffeescript
-console.log "#{name} is #{age}"
-```
+  console.log "#{name} is #{age}"
+  ```
 
 ## Operators
 
 - Prefer `and`, `or`, `not` to `&&`, `||`, `!`:
 
   ```coffeescript
-if messageShouldBeSent and not tooLate
-  send "toto"
-```
+  if messageShouldBeSent and not tooLate
+      send "toto"
+  ```
 
 - Prefer `is`, `isnt`, to `==` or `!=`:
 
   ```coffeescript
-myVariable += 1 if myVariable is 5 
-myOtherVariable -= 1 if myVariable isnt 0
-```
+  myVariable += 1 if myVariable is 5 
+  myOtherVariable -= 1 if myVariable isnt 0
+  ```
 
 - Prefer `@` to `this`:
 
   ```coffeescript
-@property = "toto"
-```
+  @property = "toto"
+  ```
 
 - Prefer destructuring for assignment when possible:
 
   ```coffeescript
-[y, x] = [x, y]
+  [y, x] = [x, y]
 
-[firstName, lastName] = "Chubby Checker".split /\s/
+  [firstName, lastName] = "Chubby Checker".split /\s/
 
-[firstWord, otherWords...] = "scrambled cassovary procedure".split /\s/ 
+  [firstWord, otherWords...] = "scrambled cassovary procedure".split /\s/ 
 
-{ name, age } = { name : "Chubby Checker", age : 53 }
-```
+  { name, age } = { name : "Chubby Checker", age : 53 }
+  ```
 
 ## Conditions
   
 - Use chained operators instead of multiple comparisons:
 
   ```coffeescript
-if 10 < x < 20 
-  doSomething()
-```
+  if 10 < x < 20 
+      doSomething()
+  ```
 
 - Use the `?` operator (for default assignement):
 
   ```coffeescript
-someFunc = (myAge) ->
-  myAge ?= 33
-```
+  someFunc = (myAge) ->
+      myAge ?= 33
+  ```
 
 - Use the `?` operator for variable existence:
 
   ```coffeescript
-coolFramework = yes if chubby? and not oldElvis?
-```
+  coolFramework = yes if chubby? and not oldElvis?
+  ```
 
 - Use the `?` operator for testing non defined callbacks:
 
   ```coffeescript
-tooLateToWalkOnWater = ({age}, done) -> 
-  done? null, age > 33
-```
+  tooLateToWalkOnWater = ({age}, done) -> 
+      done? null, age > 33
+  ```
 
 - Use the elvis operators instead of checking for `null` explicitly:
 
   ```coffeescript
-age = person?.getAge?().intValue
-```
+  age = person?.getAge?().intValue
+  ```
 
 - Only use `unless` if the condition is rarely true. *It's usually safer to just
   never use `unless`*:
 
   ```coffeescript
-doSomething() unless extremelyUnlikelyThing
-```
+  doSomething() unless extremelyUnlikelyThing
+  ```
 
 ## Enumeration 
 
@@ -215,127 +215,127 @@ doSomething() unless extremelyUnlikelyThing
   **Avoid:**
 
   ```coffeescript
-ages = []
-for person in persons
-  if person.age > 30
-    ages.push person.age
-```
+  ages = []
+  for person in persons
+      if person.age > 30
+          ages.push person.age
+  ```
 
   **Prefer:**
 
   ```coffeescript
-ages = persons
-  .filter (p) -> p.age > 30
-  .map (p) -> p.age
+  ages = persons
+      .filter (p) -> p.age > 30
+      .map (p) -> p.age
 
-ages = (person.age for person in persons when person.age > 30)
-```
+  ages = (person.age for person in persons when person.age > 30)
+  ```
 
   **Avoid:**
 
   ```coffeescript
-ageSum = 0
-for person in persons
-  ageSum += person.age
-```
+  ageSum = 0
+  for person in persons
+      ageSum += person.age
+  ```
 
   **Prefer:**
 
   ```coffeescript
-ageSum = persons.reduce (sum, p) ->
-  sum + p.age
-, 0
-```
+  ageSum = persons.reduce (sum, p) ->
+      sum + p.age
+  , 0
+  ```
 
 ## Functions
 
 - DON'T use `return` for *small* (one or two expressions) functions:
 
   ```coffeescript
-add = (x, y) -> 
-  x + y
-```
+  add = (x, y) -> 
+    x + y
+  ```
 
 - But DO use `return` for larger functions or functions with multiple return
   points:
 
   ```coffeescript
-sumFirst = (a, b) ->
-  if not a?
-    return null
-  if not b?
-    return null
-  return a[0] + b[0]
-```
+  sumFirst = (a, b) ->
+      if not a?
+          return null
+      if not b?
+          return null
+      return a[0] + b[0]
+  ```
 
 - Use the do operator for closures:
 
   ```coffeescript
-for age in ages
-  do (age) -> 
-    setTimeout -> 
-      console.log age
-    , 100
-```
+  for age in ages
+      do (age) -> 
+          setTimeout -> 
+              console.log age
+          , 100
+  ```
 
 - Write default arguments in the function declaration:
 
   ```coffeescript
-totalUsage = (users = [], done) -> 
-  usage = users.reduce (total, user) -> 
-    total + user.usage
-  , 0
-  done? null, { usage }
-```
+  totalUsage = (users = [], done) -> 
+      usage = users.reduce (total, user) -> 
+          total + user.usage
+        , 0
+      done? null, { usage }
+  ```
 
 - Use destructuring in function arguments for parameter style functions:
 
   **Avoid:**
   
   ```coffeescript
-add = (params, done) ->
-  done null, params.a + params.b
-```
+  add = (params, done) ->
+      done null, params.a + params.b
+  ```
 
   **Prefer:**
 
   ```coffeescript
-add = ({ a, b }, done) ->
-  done null, a + b
-```
+  add = ({ a, b }, done) ->
+      done null, a + b
+  ```
 
 - Use the fat arrow instead of binding functions manually:
 
   **Avoid:**
 
   ```coffeescript
-that = @
-$('.header').click ->
-  that.doSomething()
-```
+  that = @
+  $('.header').click ->
+      that.doSomething()
+  ```
 
   **Prefer:**
 
   ```coffeescript
-$('.header').click =>
-  @doSomething()
-```
+  $('.header').click =>
+      @doSomething()
+  ```
 
 - Don't define more than one function on a single line:
 
   **Avoid:**
 
   ```coffeescript
-list.map((p) -> p.age).filter((a) -> a > 20)
-```
+  list.map((p) -> p.age).filter((a) -> a > 20)
+  ```
 
   **Prefer:**
 
   ```coffeescript
-list
-  .map (p) -> p.age
-  .filter (a) -> a > 20
-```
+  list
+      .map (p) -> p.age
+      .filter (a) -> a > 20
+  ```
 
 - **A declared function must have ONLY a `)` or new line after it.** this prevents
   many subtle bugs caused by a function body taking over an expression, as well
@@ -344,28 +344,28 @@ list
   **Wrong (won't compile):**
 
   ```text
-    if _.any users, (u) -> u.active and userWidgetEnabled
+  if _.any users, (u) -> u.active and userWidgetEnabled
       showUserWidget()
-```
+  ```
 
   **Correct:**
 
   ```coffeescript
-if _.any(users, (u) -> u.active) and userWidgetEnabled
-  showUserWidget()
-```
+  if _.any(users, (u) -> u.active) and userWidgetEnabled
+      showUserWidget()
+  ```
 
   **Wrong (invalid semantics):**
 
   ```coffeescript
-show = _.any users, (u) -> u.active and userWidgetEnabled
-```
+  show = _.any users, (u) -> u.active and userWidgetEnabled
+  ```
 
   **Correct:**
 
   ```coffeescript
-show = _.any(users, (u) -> u.active) and userWidgetEnabled
-```
+  show = _.any(users, (u) -> u.active) and userWidgetEnabled
+  ```
 
   When it doubt, write it more explicitly :)
 
@@ -375,11 +375,11 @@ show = _.any(users, (u) -> u.active) and userWidgetEnabled
   **Avoid:**
 
   ```coffeescript
-(($ '.header').addClass 'active').show()
-```
+  (($ '.header').addClass 'active').show()
+  ```
 
   **Prefer:**
 
   ```coffeescript`
-    $('.header').addClass('active').show()
-```
+  $('.header').addClass('active').show()
+  ```
