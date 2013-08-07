@@ -1,165 +1,124 @@
-## Indentations, whitespaces, ...
+## Indentation & whitespace
 
-- Your text editor should be configured to not create tabs, but whitespaces when you indent. 
-- A indentation should be equal to 2 whitespaces. 
-- Line length should be limited to 80 characters.
-- No whitespaces inside brackets
-- One whitespace around those operators : =, +=, >, ..
+- Configure your text editor to use **2 spaces**, not tabs.
 
+- Lines should not be longer than 80 characters.
 
-    myVar = 1
-    test = (params = {}, done) -> 
+- No whitespace inside brackets:
+
+    test = (params, done) ->
       done null, {}
 
-- One whitespace after a comma
+- But DO have one space inside curly braces:
 
+    someObj = { a: 1, b: 2 }
 
-    console.log "toto", "toto2"
+- Surround operators and arrows (`->` and `=>`) with a single space:
 
-- One white space before -> or => 
+    foo = 1 + 2 + 3
+    myFunction = -> console.log 'toto'
 
+- Use a single space after commas:
 
-    myFunc = -> console.log "toto"
+    console.log 'toto', 'toto2'
 
-- Naming Conventions : use camelCase for naming variables, functions
+- Indent chains of methods:
 
+    $('#menu')
+      .show()
+      .addClass('active')
 
-    myFunction = -> console.log "toto"
-    myVariable = 10
-
-
-## Use keywords or nothing instead of symbols when possible 
-
-- Prefer and, or, not to &&, ||, !
-
-
-    if messageShouldBeSent and notToLate
-      send "toto"
-
-    if messageShouldBeSent or not toLate
-      send "toto"
-
-- Prefer is, isnt, to == or !=
-
-
-    myVariable += 1 if myVariable is 5 
-    myOtherVariable -= 1 if myVariable isnt 0
-
-- Prefer @ to this
-
-
-    @property = "toto"
-
-- Prefer no brackets when it's not necessary : Function declaration 
-
+- Don't use brackets and commas when unnecessary for functions objects and
+  arrays:
 
     myFunc = (params, done) -> 
       result = 1
       done null, result
 
-- Prefer no curly brackets and no commas when it's not necessary : Object Declaration 
-
-
     myObject = 
-      myFirstProperty : 1
-      mySecondProperty
-      myThirdProperty : 4
+      myFirstProperty: 1
+      mySecondProperty: 2
+      myThirdProperty: 3
 
-- Don't use return when it's not necessary. (Unless using return gives more clarity to the code) 
+    myArray = [
+      'cat'
+      'dog'
+      'hamster'
+    ]
 
+## Naming
 
-    add = (x, y) -> 
-      x + y
+- Use lowerCamelCase for naming variables and functions. Acronyms and
+  initialisms should have only their first letter capitalised:
 
+    htmlAndCssFragment = '<p style="color: red">'
 
-## Comparisons
-  
-- Use chained operators instead of multiple comparisons
+- Try to give functions a verb-like name, and variables a noun-like name.
 
+    name = 'Jack'
+    printName = -> console.log name
 
-    if 10 < x < 20 
-      doSomething()
+- Try to keep variable names positive:
 
+    enableCaptcha = true
+    # NOT: disableCaptcha = false
 
-- use the ? operator (for default assignement)
+- Try to use descriptive variable names so that the code is self documenting.
+  Break up long expressions with variables so that code doesn't look so
+  intimidating to other devs. Variable names that sound read like an English
+  sentence when used are really great, if possible.
 
+  Avoid:
 
-    myAge ?= 33
+    if num % 2 is 1
+      console.log 'number is odd'
 
-- use the ? operator for variable existence
+  Prefer:
 
+    even = num % 2 is 0
+    if not even
+      console.log 'number is odd'
 
-    coolFramework = yes if chubby? and not oldElvis?
+## Primitives
 
-- use the ? operator for testing non defined callbacks
+- Use just `true` and `false`, not `yes`, `no`, `on` or `off`:
 
+    x = true
 
-    tooLateToWalkOnWater = ({age}, done) -> 
-      done? null, age > 33
+- Leave the decimal point off numbers: all numbers should be treated as
+  fractional. Keep the leading `0` for numbers between 0 and 1.
 
-- soaking
+    x = 2
+    y = 2.3
+    z = 0.5
 
+- Prefer single quotes for strings. Use double quotes when text contains single
+  quotes or interpolation is required:
 
-    age = person?.getAge?().intValue
-    
+    console.log 'Fred is cool'
+    console.log "Fred's alright"
 
-## Enumeration 
+- Use interpolation instead of concatenation:
 
-- Prefer loop comprehensions or map/filter/reduce functions to for loop constructions
+    console.log "#{name} is #{age}"
 
-To avoid : 
+## Operators
 
+- Prefer `and`, `or`, `not` to `&&`, `||`, `!`:
 
-    ages = []
-    for person in persons
-      if person.age > 30
-        ages.push person.age
+    if messageShouldBeSent and not tooLate
+      send "toto"
 
+- Prefer `is`, `isnt`, to `==` or `!=`:
 
-To prefer : 
+    myVariable += 1 if myVariable is 5 
+    myOtherVariable -= 1 if myVariable isnt 0
 
+- Prefer `@` to `this`:
 
-    ages = persons.map (person) -> person.age
+    @property = "toto"
 
-    ages = persons
-             .filter (p) -> p.age > 30
-             .map (p) -> p.age
-
-    ages = (person.age for person in persons)
-
-    ages = (person.age for person in persons when person.age > 30)
-
-To avoid : 
-
-
-    ageSum = 0
-    for person in persons
-      ageSum += person.age
-
-To prefer
-
-
-    ageSum = persons.reduce (result, person) -> 
-      result += person.age
-    , 0
-
-
-## Closures
-
-- Use the do operator
-
-
-    for age in ages
-      do (age) -> 
-        setTimeout () -> 
-          console.log age
-        , 100
-
-
-## Assignement / Destructuration
-
-- Use destructuration when possible
-
+- Prefer destructuring for assignment when possible:
 
     [y, x] = [x, y]
 
@@ -169,11 +128,94 @@ To prefer
 
     { name, age } = { name : "Chubby Checker", age : 53 }
 
-    isRockStar = ({name, age}, done) -> 
-      done null, name is "Chubby Checker" or age < 27
 
-- Use default parameters instead of assigning default values inside the function
+## Conditions
+  
+- Use chained operators instead of multiple comparisons:
 
+    if 10 < x < 20 
+      doSomething()
+
+- Use the `?` operator (for default assignement):
+
+    someFunc = (myAge) ->
+      myAge ?= 33
+
+- Use the `?` operator for variable existence:
+
+    coolFramework = yes if chubby? and not oldElvis?
+
+- Use the `?` operator for testing non defined callbacks:
+
+    tooLateToWalkOnWater = ({age}, done) -> 
+      done? null, age > 33
+
+- Use the elvis operators instead of checking for `null` explicitly:
+
+    age = person?.getAge?().intValue
+
+- Only use `unless` if the condition is rarely true. *It's usually safer to just
+  never use `unless`*:
+
+    doSomething() unless extremelyUnlikelyThing
+
+## Enumeration 
+
+- Prefer loop comprehensions or map/filter/reduce rather than loops.
+
+  Avoid:
+
+    ages = []
+    for person in persons
+      if person.age > 30
+        ages.push person.age
+
+  Prefer : 
+
+    ages = persons
+      .filter (p) -> p.age > 30
+      .map (p) -> p.age
+
+    ages = (person.age for person in persons when person.age > 30)
+
+  Avoid:
+
+    ageSum = 0
+    for person in persons
+      ageSum += person.age
+
+  Prefer:
+
+    ageSum = persons.reduce (sum, p) ->
+      sum + p.age
+    , 0
+
+## Functions
+
+- DON'T use `return` for *small* (one or two expressions) functions:
+
+    add = (x, y) -> 
+      x + y
+
+- But DO use `return` for larger functions or functions with multiple return
+  points:
+
+    sumFirst = (a, b) ->
+      if not a?
+        return null
+      if not b?
+        return null
+      return a[0] + b[0]
+
+- Use the do operator for closures:
+
+    for age in ages
+      do (age) -> 
+        setTimeout -> 
+          console.log age
+        , 100
+
+- Write default arguments in the function declaration:
 
     totalUsage = (users = [], done) -> 
       usage = users.reduce (total, user) -> 
@@ -181,12 +223,76 @@ To prefer
       , 0
       done? null, { usage }
 
+- Use destructuring in function arguments for parameter style functions:
 
-## Strings 
+  Avoid:
 
-- Use interpolation instead of concatenation
+    add = (params, done) ->
+      done null, params.a + params.b
 
+  Prefer:
 
-    console.log "#{name} is #{age} old"
+    add = ({ a, b }, done) ->
+      done null, a + b
 
+- Use the fat arrow instead of binding functions manually:
 
+  Avoid:
+
+    that = @
+    $('.header').click ->
+      that.doSomething()
+
+  Prefer:
+
+    $('.header').click =>
+      @doSomething()
+
+- Don't define more than one function on a single line:
+
+  Avoid:
+    
+    list.map((p) -> p.age).filter((a) -> a > 20)
+
+  Prefer:
+
+    list
+      .map (p) -> p.age
+      .filter (a) -> a > 20
+
+- **A declared function must have ONLY a `)` or new line after it.** this prevents
+  many subtle bugs caused by a function body taking over an expression, as well
+  as plain invalid CoffeeScript.
+
+  Wrong (won't compile):
+    
+    ###
+    if _.any users, (u) -> u.active and userWidgetEnabled
+      showUserWidget()
+    ###
+
+  Correct:
+
+    if _.any(users, (u) -> u.active) and userWidgetEnabled
+      showUserWidget()
+
+  Wrong (invalid semantics):
+
+    show = _.any users, (u) -> u.active and userWidgetEnabled
+
+  Correct:
+
+    show = _.any(users, (u) -> u.active) and userWidgetEnabled
+
+  When it doubt, write it more explicitly :)
+
+- Put brackets around arguments when necessary, not around the entire function
+  invocation:
+
+  Avoid:
+
+    (($ '.header').addClass 'active').show()
+
+  Prefer:
+
+    $('.header').addClass('active').show()
