@@ -384,7 +384,7 @@
   **Avoid:**
 
   ```coffeescript
-  that = @
+  that = this
   $('.header').click ->
       that.doSomething()
   ```
