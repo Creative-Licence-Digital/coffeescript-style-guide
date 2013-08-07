@@ -42,6 +42,9 @@
   arrays:
 
   ```coffeescript
+  voidFunc = ->
+    console.log 'hey there'
+
   myFunc = (params, done) -> 
       result = 1
       done null, result
@@ -56,15 +59,45 @@
       'dog'
       'hamster'
   ]
+
+  instance = new SomeClass
+  ```
+
+- Put a space after the `#` when writing comments, and be sure to space them
+  out.
+
+  ```coffeescript
+  # some comment
+  blah()
+
+  # ensure comments have a new line above them
+  foo()
+  ```
+
+- Use a blank line to seperate parts of code that are semantically different
+  from one another, or to break up hairy parts of a method. Comments may refer
+  to the block of code following it:
+
+  ```coffeescript
+  # update user
+  user.name = 'Greg'
+  user.age = 21
+
+  # update address
+  address.street = 'Tradewinds'
+  address.number = 61
+  address.postcode = '2300'
   ```
 
 ## Naming
 
 - Use lowerCamelCase for naming variables and functions. Acronyms and
-  initialisms should have only their first letter capitalised:
+  initialisms should have only their first letter capitalised. Use
+  UpperCamelCase for classes.
 
   ```coffeescript
   htmlAndCssFragment = '<p style="color: red">'
+  someClass = new SomeClass
   ```
 
 - Try to give functions a verb-like name, and variables a noun-like name.
@@ -132,6 +165,15 @@
   console.log "#{name} is #{age}"
   ```
 
+- Don't write quotes for object keys unless necessary:
+
+  ```coffeescript
+  person =
+    name: 'Fred'
+    age: 20
+    'some-strange-key': 9
+  ```
+
 ## Operators
 
 - Prefer `and`, `or`, `not` to `&&`, `||`, `!`:
@@ -148,10 +190,18 @@
   myOtherVariable -= 1 if myVariable isnt 0
   ```
 
-- Prefer `@` to `this`:
+- Prefer `@prop` to `this.prop`:
 
   ```coffeescript
   @property = "toto"
+  @method()
+  ```
+
+- Prefer `this` to `@` when referring to the `this` object:
+
+  ```coffeescript
+  return this
+  _.bind this, someFunc
   ```
 
 - Prefer destructuring for assignment when possible:
@@ -302,6 +352,16 @@
         , 0
       done? null, { usage }
   ```
+
+- Use splats (`...`) when working with variable arguments:
+
+    ```coffeescript
+    log = (level, rest...) ->
+        if level is 'error'
+            console.error rest...
+        else
+            console.log rest...
+    ```
 
 - Use destructuring in function arguments for parameter style functions:
 
