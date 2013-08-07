@@ -208,17 +208,17 @@
 
   ```coffeescript
   unless foo < 2
-    bar()
+      bar()
 
   unless extremelyUnlikelyThing
-    doSomething()
+      doSomething()
   ```
 
   **Prefer:**
 
   ```coffeescript
   if foo >= 2
-    bar()
+      bar()
 
   doSomething() unless extremelyUnlikelyThing
   ```
