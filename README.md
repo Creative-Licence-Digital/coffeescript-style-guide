@@ -201,10 +201,25 @@
   age = person?.getAge?().intValue
   ```
 
-- Only use `unless` if the condition is rarely true. *It's usually safer to just
-  never use `unless`*:
+- Only use `unless` if the condition is rarely true, and in its postfix form.
+  *It's usually safer to just never use `unless`*:
+
+  **Avoid:**
 
   ```coffeescript
+  unless foo < 2
+    bar()
+
+  unless extremelyUnlikelyThing
+    doSomething()
+  ```
+
+  **Prefer:**
+
+  ```coffeescript
+  if foo >= 2
+    bar()
+
   doSomething() unless extremelyUnlikelyThing
   ```
 
@@ -382,4 +397,46 @@
 
   ```coffeescript`
   $('.header').addClass('active').show()
+  ```
+
+## General advice
+
+- Keep functions small and focused on doing one thing.
+
+  A function larger than 20 or so lines probably indicates that it is trying to
+  do too much. Seperate the function into smaller functions (joining them
+  together using something like `bf.chain`) or look for some repeated pattern
+  that can be abstracted away.
+
+- Don't repeat yourself.
+
+  If you find yourself typing similar code more than a few times, this indicates
+  some abstraction that can be made.
+
+  **Avoid:**
+
+  ```coffeescript
+  getUser = ({ id }, done) ->
+      User.findById id, done
+
+  getAccount = ({ id }, done) ->
+      Account.findById id, done
+
+  # ...etc
+
+  getAddress = ({ id }, done) ->
+      Address.findById id, done
+  ```
+
+  **Prefer:**
+
+  ```coffeescript
+  getUser = get User
+  getAccount = get Account
+  # ...etc
+  getAddress = get Address
+
+  get = (model) ->
+      ({ id }, done) ->
+          model.findById id, done
   ```
