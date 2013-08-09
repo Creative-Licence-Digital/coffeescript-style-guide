@@ -34,7 +34,7 @@
  
   ```coffeescript
   dog =
-    name: 'Fido'
+      name: 'Fido'
   ```
 
 - Indent chains of methods:
