@@ -29,9 +29,9 @@
   ```coffeescript
   console.log 'toto', 'toto2'
   ```
-  
+
 - Use a single space after keys when defining objects. Don't put a space before the colon!
- 
+
   ```coffeescript
   dog =
       name: 'Fido'
@@ -52,15 +52,15 @@
   voidFunc = ->
     console.log 'hey there'
 
-  myFunc = (params, done) -> 
+  myFunc = (params, done) ->
       result = 1
       done null, result
-  
-  myObject = 
+
+  myObject =
       myFirstProperty: 1
       mySecondProperty: 2
       myThirdProperty: 3
-  
+
   myArray = [
       'cat'
       'dog'
@@ -193,7 +193,7 @@
 - Prefer `is`, `isnt`, to `==` or `!=`:
 
   ```coffeescript
-  myVariable += 1 if myVariable is 5 
+  myVariable += 1 if myVariable is 5
   myOtherVariable -= 1 if myVariable isnt 0
   ```
 
@@ -218,17 +218,17 @@
 
   [firstName, lastName] = "Chubby Checker".split /\s/
 
-  [firstWord, otherWords...] = "scrambled cassovary procedure".split /\s/ 
+  [firstWord, otherWords...] = "scrambled cassovary procedure".split /\s/
 
   { name, age } = { name : "Chubby Checker", age : 53 }
   ```
 
 ## Conditions
-  
+
 - Use chained operators instead of multiple comparisons:
 
   ```coffeescript
-  if 10 < x < 20 
+  if 10 < x < 20
       doSomething()
   ```
 
@@ -248,7 +248,7 @@
 - Use the `?` operator for testing non defined callbacks:
 
   ```coffeescript
-  tooLateToWalkOnWater = ({age}, done) -> 
+  tooLateToWalkOnWater = ({age}, done) ->
       done? null, age > 33
   ```
 
@@ -257,7 +257,7 @@
   ```coffeescript
   age = person?.getAge?().intValue
   ```
-  
+
 - Prefer `if condition ...` to `... if condition`.
 
 - Only use `unless` if the condition is rarely true, and in its postfix form.
@@ -282,7 +282,7 @@
   doSomething() unless extremelyUnlikelyThing
   ```
 
-## Enumeration 
+## Enumeration
 
 - Prefer loop comprehensions or map/filter/reduce rather than loops.
 
@@ -326,7 +326,7 @@
 - DON'T use `return` for *small* (one or two expressions) functions:
 
   ```coffeescript
-  add = (x, y) -> 
+  add = (x, y) ->
     x + y
   ```
 
@@ -346,8 +346,8 @@
 
   ```coffeescript
   for age in ages
-      do (age) -> 
-          setTimeout -> 
+      do (age) ->
+          setTimeout ->
               console.log age
           , 100
   ```
@@ -355,8 +355,8 @@
 - Write default arguments in the function declaration:
 
   ```coffeescript
-  totalUsage = (users = [], done) -> 
-      usage = users.reduce (total, user) -> 
+  totalUsage = (users = [], done) ->
+      usage = users.reduce (total, user) ->
           total + user.usage
         , 0
       done? null, { usage }
@@ -375,7 +375,7 @@
 - Use destructuring in function arguments for parameter style functions:
 
   **Avoid:**
-  
+
   ```coffeescript
   add = (params, done) ->
       done null, params.a + params.b
