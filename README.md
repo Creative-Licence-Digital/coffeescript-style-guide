@@ -510,3 +510,9 @@
       ({ id }, done) ->
           model.findById id, done
   ```
+
+- Give Literate CoffeeScript a try, it's not bad.
+  - Use the `.coffee.md` extension
+  - Seperate sections of your code with `## Headings`
+  - Write as if you're talking to your code reviewer, e.g. "We want to ..., so we first ..."
+  - Look at https://github.com/jashkenas/journo as an example
