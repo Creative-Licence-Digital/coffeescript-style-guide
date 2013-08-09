@@ -29,6 +29,13 @@
   ```coffeescript
   console.log 'toto', 'toto2'
   ```
+  
+- Use a single space after keys when defining objects. Don't put a space before the colon!
+ 
+  ```coffeescript
+  dog =
+    name: 'Fido'
+  ```
 
 - Indent chains of methods:
 
@@ -235,7 +242,7 @@
 - Use the `?` operator for variable existence:
 
   ```coffeescript
-  coolFramework = yes if chubby? and not oldElvis?
+  coolFramework = true if chubby? and not oldElvis?
   ```
 
 - Use the `?` operator for testing non defined callbacks:
@@ -250,6 +257,8 @@
   ```coffeescript
   age = person?.getAge?().intValue
   ```
+  
+- Prefer `if condition ...` to `... if condition`.
 
 - Only use `unless` if the condition is rarely true, and in its postfix form.
   *It's usually safer to just never use `unless`*:
@@ -379,7 +388,8 @@
       done null, a + b
   ```
 
-- Use the fat arrow instead of binding functions manually:
+- Use the fat arrow instead of binding functions manually, but only use the fat arrow
+  when necessary.
 
   **Avoid:**
 
