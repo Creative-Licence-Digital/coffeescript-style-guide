@@ -299,8 +299,8 @@
 
   ```coffeescript
   ages = persons
-      .filter (p) -> p.age > 30
-      .map (p) -> p.age
+      .filter((p) -> p.age > 30)
+      .map((p) -> p.age)
 
   ages = (person.age for person in persons when person.age > 30)
   ```
